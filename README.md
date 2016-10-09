@@ -1,1 +1,1 @@
-# ER
+# Small project for academic pursposes
