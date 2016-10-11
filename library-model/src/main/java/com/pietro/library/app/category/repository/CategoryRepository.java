@@ -46,7 +46,7 @@ public class CategoryRepository {
 		return query.setMaxResults(1).getResultList().size() > 0;
 	}
 
-	public Object exitstsById(final Long javaCategoryId) {
+	public boolean exitstsById(final Long javaCategoryId) {
 		return em.createQuery("SELECT 1 FROM Category c WHERE c.id = :id")
 				.setParameter("id", javaCategoryId)
 				.setMaxResults(1)

@@ -1,26 +1,29 @@
 package com.pietro.library.app.category.service.impl;
 
-import static com.pietro.library.app.commontests.category.CategoryForTestsRepository.*;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static com.pietro.library.app.commontests.category.CategoryForTestsRepository.categoryWithId;
+import static com.pietro.library.app.commontests.category.CategoryForTestsRepository.java;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import javax.validation.Validation;
 import javax.validation.Validator;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.pietro.library.app.category.exception.CategoryExistsException;
+import com.pietro.library.app.category.exception.CategoryNotFoundException;
 import com.pietro.library.app.category.model.Category;
 import com.pietro.library.app.category.repository.CategoryRepository;
 import com.pietro.library.app.category.service.CategoryService;
 import com.pietro.library.app.common.exception.FieldNotValidException;
 
 public class CategoryServiceTest {
-	private static final Logger LOG = LoggerFactory.getLogger(CategoryServiceTest.class);
 	private CategoryService categoryService;
 	private Validator validator;
 	private CategoryRepository categoryRepository;
@@ -82,6 +85,32 @@ public class CategoryServiceTest {
 		updateCategoryWithInvalidName("This is a long name that will cause an exception to be thrown");
 	}
 	
+	@Test(expected=CategoryExistsException.class)
+	public void updateCategoryWithExistingName() {
+		when(categoryRepository.alreadyExists(categoryWithId(java(), 1L))).thenReturn(true);
+		categoryService.update(categoryWithId(java(), 1L));
+	}
+	
+	@Test(expected=CategoryNotFoundException.class)
+	public void updateCategoryNotFound() {
+		when(categoryRepository.alreadyExists(categoryWithId(java(), 1L))).thenReturn(false);
+		when(categoryRepository.exitstsById(1L)).thenReturn(false);
+		
+		categoryService.update(categoryWithId(java(), 1L));
+	}
+
+	@Test
+	public void updateValidCategory() {
+		when(categoryRepository.alreadyExists(categoryWithId(java(), 1L))).thenReturn(false);
+		when(categoryRepository.exitstsById(1L)).thenReturn(true);
+		
+		categoryService.update(categoryWithId(java(), 1L));
+		
+		// checks it the method was invoked
+		verify(categoryRepository).update(categoryWithId(java(), 1L));
+	}
+	
+	
 	private void addCategoryWithInvalidName(final String name) {
 		try {
 			categoryService.add(new Category(name));
@@ -93,7 +122,7 @@ public class CategoryServiceTest {
 	
 	private void updateCategoryWithInvalidName(final String name) {
 		try {
-			categoryService.edit(new Category(name));
+			categoryService.update(new Category(name));
 			fail("An error should have beed thrown");
 		} catch (final FieldNotValidException e) {
 			assertThat(e.getFieldName(), is(equalTo("name")));

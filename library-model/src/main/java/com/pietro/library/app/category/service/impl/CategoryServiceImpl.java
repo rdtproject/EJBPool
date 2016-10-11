@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import com.pietro.library.app.category.exception.CategoryExistsException;
+import com.pietro.library.app.category.exception.CategoryNotFoundException;
 import com.pietro.library.app.category.model.Category;
 import com.pietro.library.app.category.repository.CategoryRepository;
 import com.pietro.library.app.category.service.CategoryService;
@@ -35,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void edit(Category category) throws FieldNotValidException {
+	public void update(Category category) throws FieldNotValidException {
 		final Set<ConstraintViolation<Category>> errors = validator.validate(category);
 		final Iterator<ConstraintViolation<Category>> itErrors = errors.iterator();
 
@@ -43,6 +44,16 @@ public class CategoryServiceImpl implements CategoryService {
 			final ConstraintViolation<Category> violation = itErrors.next();
 			throw new FieldNotValidException(violation.getPropertyPath().toString(), violation.getMessage());
 		}		
+		
+		if (categoryRepository.alreadyExists(category)) {
+			throw new CategoryExistsException();
+		}
+		
+		if (!categoryRepository.exitstsById(category.getId())) {
+			throw new CategoryNotFoundException();
+		}
+		
+		categoryRepository.update(category);
 	}
 
 }
