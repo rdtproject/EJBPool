@@ -7,4 +7,6 @@ import com.pietro.library.app.common.exception.FieldNotValidException;
 public interface CategoryService {
 	Category add(Category category) throws FieldNotValidException, CategoryExistsException;
 
+	void edit(Category category) throws FieldNotValidException;
+
 }

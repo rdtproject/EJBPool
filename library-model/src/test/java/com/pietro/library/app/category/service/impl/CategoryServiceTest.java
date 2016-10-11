@@ -67,14 +67,37 @@ public class CategoryServiceTest {
 		assertThat(categoryAdded.getId(), is(equalTo(1L)));
 	}
 
+	@Test
+	public void updateWithNullName() {
+		updateCategoryWithInvalidName(null);
+	}
+	
+	@Test
+	public void updateWithShortName() {
+		updateCategoryWithInvalidName("A");
+	}
+	
+	@Test
+	public void updateWithLongName() {
+		updateCategoryWithInvalidName("This is a long name that will cause an exception to be thrown");
+	}
+	
 	private void addCategoryWithInvalidName(final String name) {
 		try {
 			categoryService.add(new Category(name));
 			fail("An error should have beed thrown");
 		} catch (final FieldNotValidException e) {
 			assertThat(e.getFieldName(), is(equalTo("name")));
-			LOG.info("addCategoryWithInvalidName - " + e.getMessage());
 		}
 	}
+	
+	private void updateCategoryWithInvalidName(final String name) {
+		try {
+			categoryService.edit(new Category(name));
+			fail("An error should have beed thrown");
+		} catch (final FieldNotValidException e) {
+			assertThat(e.getFieldName(), is(equalTo("name")));
+		}
+	}	
 
 }
