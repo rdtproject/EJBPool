@@ -1,11 +1,11 @@
-package com.pietro.library.app.category.service;
+package com.pietro.library.category.service;
 
 import java.util.List;
 
-import com.pietro.library.app.category.exception.CategoryExistsException;
-import com.pietro.library.app.category.exception.CategoryNotFoundException;
-import com.pietro.library.app.category.model.Category;
-import com.pietro.library.app.common.exception.FieldNotValidException;
+import com.pietro.library.category.exception.CategoryExistsException;
+import com.pietro.library.category.exception.CategoryNotFoundException;
+import com.pietro.library.category.model.Category;
+import com.pietro.library.common.exception.FieldNotValidException;
 
 public interface CategoryService {
 	Category add(Category category) throws FieldNotValidException, CategoryExistsException;

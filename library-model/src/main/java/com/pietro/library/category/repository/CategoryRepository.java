@@ -1,11 +1,11 @@
-package com.pietro.library.app.category.repository;
+package com.pietro.library.category.repository;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.pietro.library.app.category.model.Category;
+import com.pietro.library.category.model.Category;
 
 public class CategoryRepository {
 

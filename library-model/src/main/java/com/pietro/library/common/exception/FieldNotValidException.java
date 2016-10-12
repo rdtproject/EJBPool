@@ -1,4 +1,4 @@
-package com.pietro.library.app.common.exception;
+package com.pietro.library.common.exception;
 
 public class FieldNotValidException extends RuntimeException {
 	private static final long serialVersionUID = 8093961635856419254L;

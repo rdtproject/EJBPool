@@ -1,6 +1,6 @@
-package com.pietro.library.app.category.repository;
+package com.pietro.library.category.repository;
 
-import static com.pietro.library.app.commontests.category.CategoryForTestsRepository.*;
+import static com.pietro.library.commontests.category.CategoryForTestsRepository.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
@@ -16,9 +16,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.pietro.library.app.category.model.Category;
-import com.pietro.library.app.commontests.utils.DBCommand;
-import com.pietro.library.app.commontests.utils.DBCommandTransactionalExecutor;
+import com.pietro.library.category.model.Category;
+import com.pietro.library.category.repository.CategoryRepository;
+import com.pietro.library.commontests.utils.DBCommand;
+import com.pietro.library.commontests.utils.DBCommandTransactionalExecutor;
 
 public class CategoryRepositoryTest {
 
@@ -30,8 +31,7 @@ public class CategoryRepositoryTest {
 
 	@Before
 	public void initTestCase() {
-		// will be executed before each test case
-		// persistence unit that will be used, it is defined in persistence.xml
+		// persistence unit is defined in persistence.xml
 		emf = Persistence.createEntityManagerFactory("libraryPU");
 		em = emf.createEntityManager();
 

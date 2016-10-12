@@ -1,4 +1,4 @@
-package com.pietro.library.app.category.model;
+package com.pietro.library.category.model;
 
 import java.io.Serializable;
 

@@ -1,11 +1,11 @@
-package com.pietro.library.app.commontests.category;
+package com.pietro.library.commontests.category;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Ignore;
 
-import com.pietro.library.app.category.model.Category;
+import com.pietro.library.category.model.Category;
 
 @Ignore
 public class CategoryForTestsRepository {

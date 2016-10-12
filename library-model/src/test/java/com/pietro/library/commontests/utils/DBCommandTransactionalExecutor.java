@@ -1,4 +1,4 @@
-package com.pietro.library.app.commontests.utils;
+package com.pietro.library.commontests.utils;
 
 import javax.persistence.EntityManager;
 

@@ -1,6 +1,6 @@
-package com.pietro.library.app.category.service.impl;
+package com.pietro.library.category.service.impl;
 
-import static com.pietro.library.app.commontests.category.CategoryForTestsRepository.*;
+import static com.pietro.library.commontests.category.CategoryForTestsRepository.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -15,12 +15,13 @@ import javax.validation.Validator;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pietro.library.app.category.exception.CategoryExistsException;
-import com.pietro.library.app.category.exception.CategoryNotFoundException;
-import com.pietro.library.app.category.model.Category;
-import com.pietro.library.app.category.repository.CategoryRepository;
-import com.pietro.library.app.category.service.CategoryService;
-import com.pietro.library.app.common.exception.FieldNotValidException;
+import com.pietro.library.category.exception.CategoryExistsException;
+import com.pietro.library.category.exception.CategoryNotFoundException;
+import com.pietro.library.category.model.Category;
+import com.pietro.library.category.repository.CategoryRepository;
+import com.pietro.library.category.service.CategoryService;
+import com.pietro.library.category.service.impl.CategoryServiceImpl;
+import com.pietro.library.common.exception.FieldNotValidException;
 
 public class CategoryServiceTest {
 	private CategoryService categoryService;
