@@ -5,7 +5,7 @@
 	version="2.0">
 	
 	<persistence-unit name="libraryPU" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.pietro.library.category.model.Category</class>
 		
 		<properties>
