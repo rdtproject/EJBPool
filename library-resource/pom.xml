@@ -9,7 +9,7 @@
   
   <dependencies>
   	<dependency>
-  		<groupId>com.library</groupId>
+  		<groupId>com.pietro</groupId>
   		<artifactId>library-model</artifactId>
   	</dependency>
   	<dependency>
@@ -23,7 +23,7 @@
   		<scope>test</scope>  		
   	</dependency>
   	<dependency>
-  		<groupId>com.library</groupId>
+  		<groupId>com.pietro</groupId>
   		<artifactId>library-model</artifactId>
   		<type>test-jar</type>
   		<scope>test</scope>  		
