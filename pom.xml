@@ -84,6 +84,22 @@
 				<version>1.2.3</version>
 				<scope>test</scope>
 			</dependency>
+
+			<!-- introduced to use classes from library-model project (jar file) -->
+			<dependency>
+				<groupId>com.pietro</groupId>
+				<artifactId>library-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- introduced to use test classes from library-model project tests jar 
+				file -->
+			<dependency>
+				<groupId>com.pietro</groupId>
+				<artifactId>library-model</artifactId>
+				<version>${project.version}</version>
+				<type>test-jar</type>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -133,5 +149,6 @@
 	</dependencies>
 	<modules>
 		<module>library-model</module>
+		<module>library-resource</module>
 	</modules>
 </project>
