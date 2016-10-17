@@ -1,6 +1,6 @@
 package com.pietro.library.common.json;
 
-import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.pietro.library.common.model.OperationResult;
 
 public final class OperationResultJsonWriter {
@@ -9,11 +9,24 @@ public final class OperationResultJsonWriter {
 	}
 
 	public static String toJson(final OperationResult operationResult) {
-		if (operationResult.getEntity() == null) {
-			return "";
-		}
+		return JsonWriter.writeToString(getJsonObject(operationResult));
+	}
 
-		final Gson gson = new Gson();
-		return gson.toJson(operationResult.getEntity());
+	private static Object getJsonObject(final OperationResult operationResult) {
+		if (operationResult.isSuccess()) {
+			return getJsonSuccess(operationResult);
+		}
+		return getJsonError(operationResult);
+	}
+
+	private static Object getJsonSuccess(final OperationResult operationResult) {
+		return operationResult.getEntity();
+	}
+
+	private static JsonObject getJsonError(final OperationResult operationResult) {
+		final JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("errorIdentification", operationResult.getErrorIdentification());
+		jsonObject.addProperty("errorDescription", operationResult.getErrorDescription());
+		return jsonObject;
 	}
 }

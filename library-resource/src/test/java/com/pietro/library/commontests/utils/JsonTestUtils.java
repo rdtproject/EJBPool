@@ -22,6 +22,10 @@ public class JsonTestUtils {
 		}
 	}
 
+	public static void assertJsonMatchesFileContent(final String actualJson, final String fileNameWithExpectedJson) {
+		assertJsonMatchesExpectedJson(actualJson, readJsonFile(fileNameWithExpectedJson));
+	}
+
 	public static void assertJsonMatchesExpectedJson(final String actualJson, final String expectedJson) {
 		try {
 			JSONAssert.assertEquals(expectedJson, actualJson, JSONCompareMode.NON_EXTENSIBLE);
@@ -29,4 +33,5 @@ public class JsonTestUtils {
 			throw new IllegalArgumentException(e);
 		}
 	}
+
 }
