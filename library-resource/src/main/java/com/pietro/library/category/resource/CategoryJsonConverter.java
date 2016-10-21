@@ -13,7 +13,6 @@ import com.pietro.library.common.json.JsonReader;
 /**
  * @ApplicationScoped - JBoss automatycznie zinstancjonuje klase i bedzie ona
  *                    dostepna w calej aplikacji (tylko 1 instancja!)
- * @author Piotr_Skirlo
  *
  */
 

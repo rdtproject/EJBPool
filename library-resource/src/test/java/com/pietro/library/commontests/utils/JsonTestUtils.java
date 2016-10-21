@@ -8,6 +8,9 @@ import org.junit.Ignore;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
+import com.google.gson.JsonObject;
+import com.pietro.library.common.json.JsonReader;
+
 @Ignore
 public class JsonTestUtils {
 	public static final String BASE_JSON_DIR = "json/";
@@ -32,6 +35,11 @@ public class JsonTestUtils {
 		} catch (final JSONException e) {
 			throw new IllegalArgumentException(e);
 		}
+	}
+
+	public static Long getIdFromJson(final String json) {
+		final JsonObject jsonObject = JsonReader.readAsJsonObject(json);
+		return JsonReader.getLongOrNull(jsonObject, "id");
 	}
 
 }
