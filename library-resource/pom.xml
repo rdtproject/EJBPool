@@ -8,6 +8,24 @@
 	</parent>
 	<artifactId>library-resource</artifactId>
 
+	<!-- Added to generate the second jar only with tests classes: src/test/java
+	(just copy-pasted from library-model) -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.pietro</groupId>

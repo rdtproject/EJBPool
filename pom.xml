@@ -100,6 +100,23 @@
 				<version>${project.version}</version>
 				<type>test-jar</type>
 			</dependency>
+			
+			<!-- introduced to use classes from library-resource project (jar file) -->
+			<dependency>
+				<groupId>com.pietro</groupId>
+				<artifactId>library-resource</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- introduced to use test classes from library-resource project tests jar 
+				file -->
+			<dependency>
+				<groupId>com.pietro</groupId>
+				<artifactId>library-resource</artifactId>
+				<version>${project.version}</version>
+				<type>test-jar</type>
+			</dependency>
+						
 		</dependencies>
 	</dependencyManagement>
 
@@ -150,5 +167,6 @@
 	<modules>
 		<module>library-model</module>
 		<module>library-resource</module>
+		<module>library-int-tests</module>
 	</modules>
 </project>
