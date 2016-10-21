@@ -2,12 +2,22 @@ package com.pietro.library.category.resource;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.pietro.library.category.model.Category;
 import com.pietro.library.common.json.JsonReader;
 
+/**
+ * @ApplicationScoped - JBoss automatycznie zinstancjonuje klase i bedzie ona
+ *                    dostepna w calej aplikacji (tylko 1 instancja!)
+ * @author Piotr_Skirlo
+ *
+ */
+
+@ApplicationScoped
 public class CategoryJsonConverter {
 	public Category convertFrom(final String json) {
 		final JsonObject jsonObject = JsonReader.readAsJsonObject(json);

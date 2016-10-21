@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
@@ -14,9 +16,16 @@ import com.pietro.library.category.repository.CategoryRepository;
 import com.pietro.library.category.service.CategoryService;
 import com.pietro.library.common.exception.FieldNotValidException;
 
+@Stateless
 public class CategoryServiceImpl implements CategoryService {
 
+	/**
+	 * @Inject is enough because WildFly already has implementation of this
+	 *         class
+	 */
+	@Inject
 	Validator validator;
+	@Inject
 	CategoryRepository categoryRepository;
 
 	@Override

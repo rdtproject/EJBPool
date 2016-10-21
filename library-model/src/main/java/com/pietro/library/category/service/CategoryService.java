@@ -2,11 +2,14 @@ package com.pietro.library.category.service;
 
 import java.util.List;
 
+import javax.ejb.Local;
+
 import com.pietro.library.category.exception.CategoryExistsException;
 import com.pietro.library.category.exception.CategoryNotFoundException;
 import com.pietro.library.category.model.Category;
 import com.pietro.library.common.exception.FieldNotValidException;
 
+@Local
 public interface CategoryService {
 	Category add(Category category) throws FieldNotValidException, CategoryExistsException;
 

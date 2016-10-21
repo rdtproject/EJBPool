@@ -2,11 +2,14 @@ package com.pietro.library.category.repository;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import com.pietro.library.category.model.Category;
 
+/** Since JEE 6 you don't need the interfaces for the Local Ejbs */
+@Stateless
 public class CategoryRepository {
 
 	// package for the need of the unit tests
@@ -47,10 +50,8 @@ public class CategoryRepository {
 	}
 
 	public boolean exitstsById(final Long javaCategoryId) {
-		return em.createQuery("SELECT 1 FROM Category c WHERE c.id = :id")
-				.setParameter("id", javaCategoryId)
-				.setMaxResults(1)
-				.getResultList().size() > 0;
+		return em.createQuery("SELECT 1 FROM Category c WHERE c.id = :id").setParameter("id", javaCategoryId)
+				.setMaxResults(1).getResultList().size() > 0;
 	}
 
 }
