@@ -16,10 +16,12 @@ public class ResourceClient {
 	private URL urlBase;
 	private String resourcePath;
 
+	/** base url - comes from server url */
 	public ResourceClient(final URL urlBase) {
 		this.urlBase = urlBase;
 	}
 
+	/** e.g. categories */
 	public ResourceClient resourcePath(final String resourcePath) {
 		this.resourcePath = resourcePath;
 		return this;
