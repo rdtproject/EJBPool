@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.pietro.library.category.model.Category;
@@ -13,6 +14,7 @@ import com.pietro.library.category.model.Category;
 public class CategoryRepository {
 
 	// package for the need of the unit tests
+	@PersistenceContext
 	EntityManager em;
 
 	public Category add(final Category category) {

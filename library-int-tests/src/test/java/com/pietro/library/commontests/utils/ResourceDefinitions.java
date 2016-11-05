@@ -2,12 +2,6 @@ package com.pietro.library.commontests.utils;
 
 import org.junit.Ignore;
 
-/**
- * This is only a helper class used to match the @Path("/categories") in
- * LibraryResource
- * 
- */
-
 @Ignore
 public enum ResourceDefinitions {
 	CATEGORY("categories");

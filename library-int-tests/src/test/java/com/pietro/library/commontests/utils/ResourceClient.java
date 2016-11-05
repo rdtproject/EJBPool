@@ -1,6 +1,6 @@
 package com.pietro.library.commontests.utils;
 
-import static com.pietro.library.commontests.utils.JsonTestUtils.readJsonFile;
+import static com.pietro.library.commontests.utils.JsonTestUtils.*;
 
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -13,16 +13,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 public class ResourceClient {
-
 	private URL urlBase;
 	private String resourcePath;
 
-	/** base url - comes from server url */
 	public ResourceClient(final URL urlBase) {
 		this.urlBase = urlBase;
 	}
 
-	/** e.g. categories */
 	public ResourceClient resourcePath(final String resourcePath) {
 		this.resourcePath = resourcePath;
 		return this;
@@ -59,5 +56,4 @@ public class ResourceClient {
 		}
 		return readJsonFile(fileName);
 	}
-
 }
