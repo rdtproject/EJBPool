@@ -35,8 +35,20 @@ public class ResourceClient {
 		return buildClient().post(Entity.entity(content, MediaType.APPLICATION_JSON));
 	}
 
+	public Response putWithFile(final String fileName) {
+		return putWithContent(getRequestFromFileOrEmptyIfNullFile(fileName));
+	}
+
+	public Response putWithContent(final String content) {
+		return buildClient().put(Entity.entity(content, MediaType.APPLICATION_JSON));
+	}
+
 	public Response get() {
 		return buildClient().get();
+	}
+
+	public void delete() {
+		buildClient().delete();
 	}
 
 	private Builder buildClient() {
@@ -58,4 +70,5 @@ public class ResourceClient {
 		}
 		return readJsonFile(fileName);
 	}
+
 }

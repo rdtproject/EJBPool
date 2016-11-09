@@ -23,11 +23,12 @@ import com.pietro.library.category.model.Category;
 import com.pietro.library.category.service.CategoryService;
 import com.pietro.library.common.exception.FieldNotValidException;
 import com.pietro.library.common.model.HttpCode;
+import com.pietro.library.commontests.utils.ResourceDefinitions;
 
 public class CategoryResourceTest {
 	private CategoryResource categoryResource;
 
-	private static final String PATH_RESOURCE = "categories";
+	private static final String PATH_RESOURCE = ResourceDefinitions.CATEGORY.getResourceName();
 
 	@Mock
 	private CategoryService categoryService;
