@@ -91,6 +91,12 @@
 				<artifactId>library-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.pietro</groupId>
+				<artifactId>library-model</artifactId>
+				<version>${project.version}</version>
+				<type>ejb</type>
+			</dependency>
 
 			<!-- introduced to use test classes from library-model project tests jar 
 				file -->
@@ -115,6 +121,20 @@
 				<artifactId>library-resource</artifactId>
 				<version>${project.version}</version>
 				<type>test-jar</type>
+			</dependency>
+
+			<!-- lesson 15, okolice 4.23 -->
+			<dependency>
+				<groupId>com.pietro</groupId>
+				<artifactId>library-resource-war</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>com.pietro</groupId>
+				<artifactId>library-resource-war</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
 			</dependency>
 						
 		</dependencies>
@@ -168,5 +188,7 @@
 		<module>library-model</module>
 		<module>library-resource</module>
 		<module>library-int-tests</module>
+		<module>library-resource-war</module>
+		<module>library-ear</module>
 	</modules>
 </project>
