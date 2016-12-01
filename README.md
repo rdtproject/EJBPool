@@ -1,1 +1,2 @@
-# Small project for academic pursposes
+# About project
+Playing with EJB stack
